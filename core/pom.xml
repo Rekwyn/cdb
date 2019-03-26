@@ -18,6 +18,9 @@
 	<mysql.version>5.1.39</mysql.version>
 	<jstl.version>1.2</jstl.version>
 	<log4j.version>2.7</log4j.version>
+	<springsecutags.version>5.1.4.RELEASE</springsecutags.version>
+	<springsecuconf.version>5.1.4.RELEASE</springsecuconf.version>
+	<springsecu.version>5.1.4.RELEASE</springsecu.version>
 	<springweb.version>5.1.5.RELEASE</springweb.version>
 	<springjdbc.version>5.1.5.RELEASE</springjdbc.version>
 	<springorm.version>5.0.2.RELEASE</springorm.version>
@@ -35,6 +38,28 @@
 	   <artifactId>hibernate-core</artifactId>
 	   <version>${hibernate.version}</version>
 	</dependency>
+  
+  	<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
+	<dependency>
+	    <groupId>org.springframework.security</groupId>
+	    <artifactId>spring-security-web</artifactId>
+	    <version>${springsecu.version}</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
+	<dependency>
+	    <groupId>org.springframework.security</groupId>
+	    <artifactId>spring-security-config</artifactId>
+	    <version>${springsecuconf.version}</version>
+	</dependency>
+	
+  <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs -->
+	<dependency>
+	    <groupId>org.springframework.security</groupId>
+	    <artifactId>spring-security-taglibs</artifactId>
+	    <version>${springsecutags.version}</version>
+	</dependency>
+  
   
   	<!--  Spring -->
 	<dependency>

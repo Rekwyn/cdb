@@ -1,0 +1,130 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>CDB</groupId>
+    <artifactId>CDB</artifactId>
+    <version>${app.version}</version>
+  </parent>
+
+  <artifactId>service</artifactId>
+  
+  <!--  versions as variables -->
+  <properties>
+	<app.version>0.0.1-SNAPSHOT</app.version>
+  	<hikari.version>3.3.1</hikari.version>
+	<junit.version>4.12</junit.version>
+	<mysql.version>5.1.39</mysql.version>
+	<jstl.version>1.2</jstl.version>
+	<log4j.version>2.7</log4j.version>
+	<springweb.version>5.1.5.RELEASE</springweb.version>
+	<springjdbc.version>5.1.5.RELEASE</springjdbc.version>
+	<springorm.version>5.0.2.RELEASE</springorm.version>
+	<hibernate.version>5.4.1.Final</hibernate.version>
+	<mavencompiler.version>3.8.0</mavencompiler.version>
+	<mavenconfig.version>1.8</mavenconfig.version>
+  </properties>
+  
+  <dependencies>
+  
+  	<dependency>
+	   <groupId>CDB</groupId>
+	   <artifactId>binding</artifactId>
+	   <version>${app.version}</version>
+	</dependency>
+
+  	<dependency>
+	   <groupId>CDB</groupId>
+	   <artifactId>persistence</artifactId>
+	   <version>${app.version}</version>
+	</dependency>
+
+	<!-- Hibernate -->
+	<dependency>
+	   <groupId>org.hibernate</groupId>
+	   <artifactId>hibernate-core</artifactId>
+	   <version>${hibernate.version}</version>
+	</dependency>
+  
+  	<!--  Spring -->
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-webmvc</artifactId>
+	    <version>${springweb.version}</version>
+	</dependency>
+	
+	<!--  Spring -->
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-orm</artifactId>
+	    <version>${springorm.version}</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-jdbc</artifactId>
+	    <version>${springjdbc.version}</version>
+	</dependency>
+  
+    <!-- HikariCP -->
+	<dependency>
+	    <groupId>com.zaxxer</groupId>
+	    <artifactId>HikariCP</artifactId>
+	    <version>${hikari.version}</version>
+	</dependency>
+  
+    <!-- junit -->
+	<dependency>
+	    <groupId>junit</groupId>
+	    <artifactId>junit</artifactId>
+	    <version>${junit.version}</version>
+	    <scope>test</scope>
+  	</dependency>
+  	
+  	<!-- mysql -->
+  	<dependency>
+	    <groupId>mysql</groupId>
+	    <artifactId>mysql-connector-java</artifactId>
+	    <version>${mysql.version}</version>
+	</dependency>
+	
+	<!-- jstl -->
+	<dependency>
+	    <groupId>javax.servlet</groupId>
+	    <artifactId>jstl</artifactId>
+	    <version>${jstl.version}</version>
+	</dependency>
+	
+	<!-- log -->
+    <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-api</artifactId>
+        <version>${log4j.version}</version>
+        </dependency>
+    <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-core</artifactId>
+        <version>${log4j.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-slf4j-impl</artifactId>
+        <version>${log4j.version}</version>
+    </dependency>
+  	
+  </dependencies>
+  
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${mavencompiler.version}</version>
+        <configuration>
+          <source>${mavenconfig.version}</source>
+          <target>${mavenconfig.version}</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

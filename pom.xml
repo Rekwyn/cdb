@@ -117,6 +117,7 @@
         <configuration>
           <source>${mavenconfig.version}</source>
           <target>${mavenconfig.version}</target>
+          <failOnMissingWebXml>false</failOnMissingWebXml>    
         </configuration>
       </plugin>
     </plugins>

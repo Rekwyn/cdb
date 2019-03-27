@@ -25,6 +25,7 @@ import org.springframework.web.context.support.AnnotationConfigWebApplicationCon
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
@@ -73,7 +74,7 @@ public class SpringConfig implements WebApplicationInitializer, WebMvcConfigurer
 		rootContext.register(SpringConfig.class);
 		servletContext.addListener(new ContextLoaderListener(rootContext));
 	}
-
+	
 	@Bean
 	public ViewResolver internalResourceViewResolver() {
 		InternalResourceViewResolver bean = new InternalResourceViewResolver();
@@ -145,4 +146,14 @@ public class SpringConfig implements WebApplicationInitializer, WebMvcConfigurer
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(localeInterceptor());
 	}
+	
+	@Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+        registry.addResourceHandler("/css/**").addResourceLocations("/css/");
+        registry.addResourceHandler("/js/**").addResourceLocations("/js/");
+        registry.addResourceHandler("/fonts/**").addResourceLocations("/fonts/");
+        registry.addResourceHandler("/img/**").addResourceLocations("/img/");
+        registry.addResourceHandler("/locale/**").addResourceLocations("/locale/");
+    }
 }

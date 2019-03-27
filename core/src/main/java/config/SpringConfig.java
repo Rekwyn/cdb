@@ -36,7 +36,7 @@ import com.zaxxer.hikari.HikariDataSource;
 @EnableWebMvc
 @EnableTransactionManagement
 @PropertySource(value = { "classpath:config.properties" })
-@ComponentScan({ "dao", "services", "controller", "mapper", "pagination", "validator", "view", "servlet" })
+@ComponentScan({ "dao", "services", "controller", "mapper", "pagination", "validator", "view", "servlet", "config" })
 public class SpringConfig implements WebApplicationInitializer, WebMvcConfigurer {
 
 	@Autowired

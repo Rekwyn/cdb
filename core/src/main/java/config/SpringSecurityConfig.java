@@ -14,9 +14,9 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth)
       throws Exception {
         auth.inMemoryAuthentication()
-          .withUser("user").password("userPass").roles("USER")
+          .withUser("user").password("{noop}userPass").roles("USER")
           .and()
-          .withUser("admin").password("adminPass").roles("ADMIN");
+          .withUser("admin").password("{noop}adminPass").roles("ADMIN");
     }
 	
 	@Override
@@ -24,14 +24,14 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	    http
 	      .csrf().disable()
 	      .authorizeRequests()
-	      .antMatchers("/auth/login*").anonymous()
+	      .antMatchers("/login*").permitAll()
 	      .anyRequest().authenticated()
 	      .and()
 	      .formLogin()
-	      .loginPage("/auth/login")
-	      .defaultSuccessUrl("/home", true)
+	      .defaultSuccessUrl("/", true)
 	      .failureUrl("/auth/login?error=true")
 	      .and()
 	      .logout().logoutSuccessUrl("/auth/login");
 	}
+	
 }

@@ -30,7 +30,7 @@ public class CompanyDaoImpl implements CompanyDao {
 	private Root<Company> root;
 	private Query<Company> query;
 
-	private CompanyDaoImpl() {
+	public CompanyDaoImpl() {
 	}
 
 	/**

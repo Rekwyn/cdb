@@ -30,7 +30,7 @@ public class ComputerDaoImpl implements ComputerDao {
 	private Root<Computer> root;
 	private Query<Computer> query;
 
-	private ComputerDaoImpl() {
+	public ComputerDaoImpl() {
 	}
 
 	/**

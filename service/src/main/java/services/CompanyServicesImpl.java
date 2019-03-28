@@ -23,7 +23,7 @@ public class CompanyServicesImpl implements CompanyServices {
 
 	private Company company;
 
-	private CompanyServicesImpl() {
+	public CompanyServicesImpl() {
 	}
 
 	/**

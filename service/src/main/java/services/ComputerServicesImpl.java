@@ -23,7 +23,7 @@ public class ComputerServicesImpl implements ComputerServices {
 
 	private Computer computer;
 
-	private ComputerServicesImpl() {
+	public ComputerServicesImpl() {
 	}
 
 	/**

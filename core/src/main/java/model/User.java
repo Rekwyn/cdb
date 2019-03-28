@@ -1,5 +1,8 @@
 package model;
 
+import java.util.Arrays;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,11 +19,13 @@ public class User {
 	@Column(name="id")
 	private Long id;
 	
-	@Column(name="name", nullable=false, unique=true)
-	private String name;
+	@Column(name="login", nullable=false, unique=true)
+	private String login;
 	
 	@Column(name="password")
 	private String password;
+
+    //private List<String> role = Arrays.asList("");
 
 	public User() {
 	}
@@ -29,29 +34,33 @@ public class User {
 		return id;
 	}
 
-	public String getName() {
-		return name;
+	public String getLogin() {
+		return login;
 	}
 	
 	public String getPassword() {
 		return password;
+	}
+	
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String login) {
+		this.login = login;
 	}
 	
-	public void setPassword(String password) {
-		this.password = password;
-	}
+//	public List<String> getRole() {
+//		return this.role;
+//	}
 	
 	@Override
 	public String toString() {
-		return "User " + this.getId() + " | " + this.getName();
+		return "User " + this.getId() + " | " + this.getLogin();
 	}
 
 	@Override
@@ -59,7 +68,7 @@ public class User {
 		final int prime = 31;
 		int result = 1;
 		result = (int) (prime * result + id);
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((login == null) ? 0 : login.hashCode());
 		return result;
 	}
 
@@ -74,10 +83,10 @@ public class User {
 		User other = (User) obj;
 		if (id != other.id)
 			return false;
-		if (name == null) {
-			if (other.name != null)
+		if (login == null) {
+			if (other.login != null)
 				return false;
-		} else if (!name.equals(other.name))
+		} else if (!login.equals(other.login))
 			return false;
 		return true;
 	}
@@ -85,14 +94,14 @@ public class User {
 	public static class UserBuilder {
 
 		private Long id;
-		private String name;
+		private String login;
 		private String password;
 
 		public User build() {
 			User user = new User();
 
 			user.setId(this.id);
-			user.setName(this.name);
+			user.setName(this.login);
 			user.setPassword(this.password);
 			
 			return user;
@@ -111,8 +120,8 @@ public class User {
 		 * @param name the user name
 		 * @return the userbuilder instance
 		 */
-		public UserBuilder setName(String name) {
-			this.name = name;
+		public UserBuilder setName(String login) {
+			this.login = login;
 			return this;
 		}
 		
@@ -125,5 +134,10 @@ public class User {
 			this.password = password;
 			return this;
 		}
+	}
+
+	public List<String> getRoles() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

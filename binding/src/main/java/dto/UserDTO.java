@@ -9,7 +9,7 @@ public class UserDTO {
 	
 	@NotNull
 	@NotEmpty
-	private String name;
+	private String login;
 	
 	@NotNull
 	@NotEmpty
@@ -26,12 +26,12 @@ public class UserDTO {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getLogin() {
+		return login;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String login) {
+		this.login = login;
 	}
 	
 	public String getPassword() {
@@ -44,13 +44,13 @@ public class UserDTO {
 	
 	@Override
 	public String toString() {
-		return "User " + this.getId() + " | " + this.getName();
+		return "User " + this.getId() + " | " + this.getLogin();
 	}
 
 	public static class UserDTOBuilder {
 
 		private String id;
-		private String name;
+		private String login;
 		private String password;
 
 		public UserDTOBuilder() {
@@ -65,7 +65,7 @@ public class UserDTO {
 			UserDTO userDto = new UserDTO();
 
 			userDto.setId(this.id);
-			userDto.setName(this.name);
+			userDto.setName(this.login);
 			userDto.setPassword(this.password);
 
 			return userDto;
@@ -88,8 +88,8 @@ public class UserDTO {
 		 * @param name the name of the user dto object
 		 * @return this the current user instance
 		 */
-		public UserDTOBuilder setName(String name) {
-			this.name = name;
+		public UserDTOBuilder setName(String login) {
+			this.login = login;
 			return this;
 		}
 		

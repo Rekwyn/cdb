@@ -1,6 +1,5 @@
 package model;
 
-import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -25,8 +24,6 @@ public class User {
 	@Column(name="password")
 	private String password;
 
-    //private List<String> role = Arrays.asList("");
-
 	public User() {
 	}
 
@@ -50,7 +47,7 @@ public class User {
 		this.id = id;
 	}
 
-	public void setName(String login) {
+	public void setLogin(String login) {
 		this.login = login;
 	}
 	
@@ -101,7 +98,7 @@ public class User {
 			User user = new User();
 
 			user.setId(this.id);
-			user.setName(this.login);
+			user.setLogin(this.login);
 			user.setPassword(this.password);
 			
 			return user;

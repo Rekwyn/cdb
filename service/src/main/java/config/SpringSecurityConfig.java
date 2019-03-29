@@ -20,21 +20,17 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private UserServicesImpl myUserServices;
 	
-//	@Override
-//    protected void configure(AuthenticationManagerBuilder auth)
-//      throws Exception {
-//        auth.inMemoryAuthentication()
-//          .withUser("user").password("{noop}userPass").roles("USER")
-//          .and()
-//          .withUser("admin").password("{noop}adminPass").roles("ADMIN");
-//    }
+	@Override
+	  protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
+	    auth.userDetailsService(myUserServices).passwordEncoder(encoder());
+	  }
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 	    http
 	      .csrf().disable()
 	      .authorizeRequests()
-	      .antMatchers("/login*").permitAll()
+	      .antMatchers("/register*").permitAll()
 	      .anyRequest().authenticated()
 	      .and()
 	      .formLogin()
@@ -49,7 +45,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	    DaoAuthenticationProvider authProvider
 	      = new DaoAuthenticationProvider();
 	    authProvider.setUserDetailsService(myUserServices);
-	    //authProvider.setPasswordEncoder(encoder());
+	    authProvider.setPasswordEncoder(encoder());
 	    return authProvider;
 	}
 	

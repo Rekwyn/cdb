@@ -35,15 +35,24 @@ public class UserDaoImpl implements UserDao {
 	}
 	
 	@Override
-	public User findByName(String username) {
+	public User findByLogin(String login) {
 
 		setupCriteria();
 
 		this.criteriaQuery = this.criteriaBuilder.createQuery(User.class);
 		this.root = this.criteriaQuery.from(User.class);
-		this.criteriaQuery.where(this.criteriaBuilder.equal(this.root.get("login"), username));
+		this.criteriaQuery.select(this.root).where(this.criteriaBuilder.equal(this.root.get("login"), login));
 		this.query = session.createQuery(criteriaQuery);
-
+		
 		return query.setMaxResults(1).uniqueResult();
+	}
+	
+	@Override
+	public User save(User user) {
+		
+		setupCriteria();
+		
+		this.session.save(user);
+		return user;
 	}
 }

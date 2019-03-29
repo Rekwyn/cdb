@@ -10,29 +10,30 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import dao.UserDao;
 import dao.UserDaoImpl;
+import dto.UserDTO;
 import model.User;
 
 @Service
-public class UserServicesImpl implements UserDetailsService, UserDao {
+public class UserServicesImpl implements UserDetailsService {
 	
 	@Autowired
 	private UserDaoImpl myUserDao;
 	
-	@Override
-	public User findByName(String username) {
-		return myUserDao.findByName(username);
-	}
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
 		List<String> l = Arrays.asList("admin");
-		User user = myUserDao.findByName(username);
+		User user = myUserDao.findByLogin(login);
+		System.out.println(user.getPassword());
 		 return  new org.springframework.security.core.userdetails.User
-		          (user.getPassword().toLowerCase(), "", true, true, 
+		          (user.getLogin(), user.getPassword(), true, true, 
 		          true, true, getAuthorities(l));
 	}
 	
@@ -43,4 +44,11 @@ public class UserServicesImpl implements UserDetailsService, UserDao {
         }
         return authorities;
     }
+	
+	public User registerNewUserAccount(UserDTO accountDto) {
+	    User user = new User();
+	    user.setLogin(accountDto.getLogin());
+	    user.setPassword(passwordEncoder.encode(accountDto.getPassword()));
+	    return myUserDao.save(user);
+	}
 }

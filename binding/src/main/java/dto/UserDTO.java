@@ -30,7 +30,7 @@ public class UserDTO {
 		return login;
 	}
 
-	public void setName(String login) {
+	public void setLogin(String login) {
 		this.login = login;
 	}
 	
@@ -65,7 +65,7 @@ public class UserDTO {
 			UserDTO userDto = new UserDTO();
 
 			userDto.setId(this.id);
-			userDto.setName(this.login);
+			userDto.setLogin(this.login);
 			userDto.setPassword(this.password);
 
 			return userDto;

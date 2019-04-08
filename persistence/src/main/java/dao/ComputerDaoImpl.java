@@ -135,13 +135,13 @@ public class ComputerDaoImpl implements ComputerDao {
 	 * @return the computer object specified
 	 */
 	@Override
-	public Computer get(Computer computer) {
+	public Computer get(Long id) {
 
 		setupCriteria();
 
 		this.criteriaQuery = this.criteriaBuilder.createQuery(Computer.class);
 		this.root = this.criteriaQuery.from(Computer.class);
-		this.criteriaQuery.where(this.criteriaBuilder.equal(this.root.get("name"), computer.getName()));
+		this.criteriaQuery.where(this.criteriaBuilder.equal(this.root.get("id"), id));
 		this.query = session.createQuery(this.criteriaQuery);
 
 		return query.setMaxResults(1).uniqueResult();

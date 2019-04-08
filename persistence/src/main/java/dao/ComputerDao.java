@@ -13,7 +13,7 @@ public interface ComputerDao {
 
 	public List<Computer> search(Computer computer);
 
-	public Computer get(Computer computer);
+	public Computer get(Long id);
 
 	public void add(Computer computer);
 
@@ -22,5 +22,4 @@ public interface ComputerDao {
 	public void delete(Computer computer);
 
 	public List<Computer> getAll(int page, int nbOfRows, String sort);
-
 }

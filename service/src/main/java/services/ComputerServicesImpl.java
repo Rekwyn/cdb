@@ -57,9 +57,8 @@ public class ComputerServicesImpl implements ComputerServices {
 	}
 
 	@Override
-	public ComputerDTO get(ComputerDTO computerDto) throws ValidatorException {
-		computer = mapper.getComputerMapper().mapDtoToObject(computerDto);
-		return mapper.getComputerMapper().mapObjectToDto(computerDao.get(computer));
+	public ComputerDTO get(String id) {
+		return mapper.getComputerMapper().mapObjectToDto(computerDao.get(Long.parseLong(id)));
 	}
 
 	@Override

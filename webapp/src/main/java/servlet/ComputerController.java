@@ -1,30 +1,25 @@
 package servlet;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
-
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import dto.*;
 import exception.ValidatorException;
 import pagination.*;
 import services.*;
 
-@RestController
+@Controller
 @RequestMapping("/")
 public class ComputerController {
 
@@ -157,20 +152,5 @@ public class ComputerController {
 
 		logger.info("Redirect to Dashboard page.");
 		return new RedirectView("/webapp");
-	}
-	
-	@GetMapping("/jackson")
-	public ComputerDTO jacksonTester() {
-		// Get the computer object and print it as Json
-		ObjectMapper mapper = new ObjectMapper();
-	    String jsonString = "{\"id\":\"1\", \"name\":\"JacksonTest\"}";
-	    try {
-		    ComputerDTO cptr = mapper.readValue(jsonString, ComputerDTO.class);
-	        jsonString = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(cptr);
-	        return cptr;
-	    } catch (JsonParseException e) { e.printStackTrace();}
-	      catch (JsonMappingException e) { e.printStackTrace(); }
-	      catch (IOException e) { e.printStackTrace(); }
-		return null;
 	}
 }

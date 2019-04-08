@@ -16,7 +16,7 @@ public interface ComputerServices {
 
 	public List<ComputerDTO> getAll(int page, int nbOfRows, String sort);
 
-	public ComputerDTO get(ComputerDTO computerDto) throws ValidatorException;
+	public ComputerDTO get(String id);
 
 	public void add(ComputerDTO computerDto) throws ValidatorException;
 

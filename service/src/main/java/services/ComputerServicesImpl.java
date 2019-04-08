@@ -21,8 +21,6 @@ public class ComputerServicesImpl implements ComputerServices {
 	@Autowired
 	private MapperFactory mapper;
 
-	private Computer computer;
-
 	public ComputerServicesImpl() {
 	}
 
@@ -72,7 +70,7 @@ public class ComputerServicesImpl implements ComputerServices {
 	}
 
 	@Override
-	public void delete(ComputerDTO computerDto) throws ValidatorException {
-		computerDao.delete(mapper.getComputerMapper().mapDtoToObject(computerDto));
+	public void delete(String id) throws ValidatorException {
+		computerDao.delete(Long.parseLong(id));
 	}
 }

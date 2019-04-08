@@ -31,7 +31,7 @@ public class WebServiceController {
 	@Autowired
 	private Paginate p;
 	
-	@GetMapping("/getcomputer/{id}") 
+	@GetMapping("/get/{id}") 
 	public ComputerDTO getComputer(@PathVariable String id) {
 		
 		return computerServices.get(id);
@@ -75,5 +75,29 @@ public class WebServiceController {
 			logger.error(e.getMessage(), e);
 			return new ResponseEntity<ComputerDTO>(computerDto, HttpStatus.CONFLICT);
 		}   
+	}
+	
+	@PostMapping("/delete/{id}")
+	public void deleteComputer(@PathVariable String id) {
+
+		try {
+			computerServices.delete(id);
+			logger.info("Computer has been correctly deleted.");
+		} catch (ValidatorException e) {
+			logger.error(e.getMessage(), e);
+		} 
+	}
+	
+	@PostMapping("/update")
+	public ResponseEntity<ComputerDTO> updateComputer(ComputerDTO computerDto) {
+		
+		try {
+			computerServices.update(computerDto);
+			logger.info("Computer has been correctly updated.");
+			return new ResponseEntity<ComputerDTO>(computerDto, HttpStatus.OK);
+		} catch (ValidatorException e) {
+			logger.error(e.getMessage(), e);
+			return new ResponseEntity<ComputerDTO>(computerDto, HttpStatus.CONFLICT);
+		}
 	}
 }

@@ -22,5 +22,5 @@ public interface ComputerServices {
 
 	public void update(ComputerDTO computerDto) throws ValidatorException;
 
-	public void delete(ComputerDTO computerDto) throws ValidatorException;
+	public void delete(String id) throws ValidatorException;
 }

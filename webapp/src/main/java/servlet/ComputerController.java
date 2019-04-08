@@ -141,12 +141,11 @@ public class ComputerController {
 		String[] idTable = selection.split(",");
 
 		for (String idComputer : idTable) {
-			ComputerDTO computer = new ComputerDTO.ComputerDTOBuilder().setName("Delete").setId(idComputer).build();
-
 			try {
-				computerServices.delete(computer);
+				computerServices.delete(idComputer);
+				logger.info("Computer has been correctly deleted.");
 			} catch (ValidatorException e) {
-				logger.error(e.getMessage());
+				logger.error(e.getMessage(), e);
 			}
 		}
 

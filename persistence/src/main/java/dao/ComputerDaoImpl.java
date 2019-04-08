@@ -81,12 +81,12 @@ public class ComputerDaoImpl implements ComputerDao {
 	 * @param computer the computer object
 	 */
 	@Override
-	public void delete(Computer computer) {
+	public void delete(Long id) {
 
 		setupCriteria();
 		CriteriaDelete<Computer> delete = this.criteriaBuilder.createCriteriaDelete(Computer.class);
 		this.root = delete.from(Computer.class);
-		delete.where(this.criteriaBuilder.equal(this.root.get("id"), computer.getId()));
+		delete.where(this.criteriaBuilder.equal(this.root.get("id"), id));
 
 		Query<?> query = session.createQuery(delete);
 		query.executeUpdate();

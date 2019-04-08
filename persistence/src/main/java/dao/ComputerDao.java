@@ -19,7 +19,7 @@ public interface ComputerDao {
 
 	public void update(Computer computer);
 
-	public void delete(Computer computer);
+	public void delete(Long id);
 
 	public List<Computer> getAll(int page, int nbOfRows, String sort);
 }

@@ -37,7 +37,9 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	      .defaultSuccessUrl("/", true)
 	      .failureUrl("/auth/login?error=true")
 	      .and()
-	      .logout().logoutSuccessUrl("/auth/login");
+	      .logout()
+          .logoutUrl("/logout")
+          .logoutSuccessUrl("/auth/login");
 	}
 	
 	@Bean

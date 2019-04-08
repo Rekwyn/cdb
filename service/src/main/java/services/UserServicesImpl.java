@@ -13,7 +13,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import dao.UserDao;
 import dao.UserDaoImpl;
 import dto.UserDTO;
 import model.User;
@@ -37,14 +36,27 @@ public class UserServicesImpl implements UserDetailsService {
 		          true, true, getAuthorities(l));
 	}
 	
+	/**
+	 * Create an list of roles for each user.
+	 * 
+	 * @param roles the original list of roles
+	 * @return authorities the authorities list
+	 */
 	private static List<GrantedAuthority> getAuthorities (List<String> roles) {
         List<GrantedAuthority> authorities = new ArrayList<>();
         for (String role : roles) {
             authorities.add(new SimpleGrantedAuthority(role));
         }
+
         return authorities;
     }
 	
+	/**
+	 * Register a new user into the DB.
+	 * 
+	 * @param accountDto the user informations in dto object
+	 * @return the saved user
+	 */
 	public User registerNewUserAccount(UserDTO accountDto) {
 	    User user = new User();
 	    user.setLogin(accountDto.getLogin());

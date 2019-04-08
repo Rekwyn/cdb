@@ -18,6 +18,7 @@
     <header class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <a class="navbar-brand" href="/webapp"><spring:message code="dashboard.title"/></a><a href="?lang=en">English</a> | <a href="?lang=fr">French</a>
+        	<a style="float:right;" href="/webapp/logout"><spring:message code="dashboard.logout"/></a>
         </div>
     </header>
 
